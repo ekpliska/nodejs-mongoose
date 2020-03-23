@@ -1,0 +1,18 @@
+<nav class="green darken-4">
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo">Todos app</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            {{#if isIndex}}
+                <li class="active"><a href="/">Todos list</a></li>
+            {{else}}
+                <li><a href="/">Todos list</a></li>
+            {{/if}}
+
+            {{#if isCreate}}
+                <li class="active"><a href="/create">Todos list</a></li>
+            {{else}}
+                <li><a href="/create">Todos list</a></li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>
