@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/', async (req, res) => {
 
-    const todos = await TodoModel.find({});
+    const todos = await TodoModel.find({}).lean();
 
     res.render('index', {
         title: 'Todos app',
@@ -20,6 +20,17 @@ router.get('/create', (req, res) => {
         title: 'Create todo',
         isCreate: true
     });
+});
+
+router.post('/create', async (req, res) => {
+    const dataPost = {
+        title: req.body.title
+    };
+
+    const todo = new TodoModel(dataPost);
+    await todo.save();
+
+    res.redirect('/');
 });
 
 module.exports = router;
