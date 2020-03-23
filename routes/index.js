@@ -33,4 +33,14 @@ router.post('/create', async (req, res) => {
     res.redirect('/');
 });
 
+router.post('/complete', async (req, res) => {
+    const todo = await TodoModel.findById(req.body.id);
+
+    todo.completed = !!req.body.completed;
+    await todo.save();
+
+    res.redirect('/');
+
+});
+
 module.exports = router;
