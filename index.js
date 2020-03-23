@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
+const path = require('path');
 
 const appRouters = require('./routes');
 
@@ -17,6 +18,7 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'style')));
 app.use(appRouters);
 
 async function start() {
